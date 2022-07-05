@@ -5,6 +5,7 @@
  * suit elements
  * fibonacci suit numbers
  * Return: return 0
+ *
  */
 int main(void)
 {
