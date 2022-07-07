@@ -1,21 +1,23 @@
 #include <stdio.h>
+
 /**
  * main - prime numbers
  *
- * Return :0
+ * Return: Always 0.
  */
-int main(void)
-{
-	long int x = 612852475143;
-	long int ab;
 
-	for (ab = 2; ab < x; ab++)
+int main(void)
+{	
+	long int x = 612852475143;
+	long int py;
+
+	for (py = 2; py < x; py++)
 	{
-		if (x % ab == 0)
+		if (x % py == 0)
 		{
-			x = x / ab;
+			x = x / py;
 		}
 	}
-	printf("%ld\n", ab);
+	printf("%ld\n", py);
 	return (0);
 }
