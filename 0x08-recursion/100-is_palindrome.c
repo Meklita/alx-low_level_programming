@@ -1,27 +1,49 @@
 #include "main.h"
+
 /**
- * wildcmp - compares two strings
- * @s1:string 1
- * @s2:string 2
- * Return:1-true,0-false
+ *  * _strlen_recursion - size
+ *   * @s: pointer to string params
+ *    * Return: recursion
  */
-int wildcmp(char *s1, char *s2)
+
+int _strlen_recursion(char *s)
 {
-	if (*s1 == '\0')
+	if (!*s)
 	{
-		if (*s2 != '\0' && *s2 == '*')
-		{
-			return (wildcmp(s1, s2 + 1));
-		}
-		return (*s2 == '\0');
+		return (0);
 	}
-	if (*s2 == '*')
+	return (1 + _strlen_recursion(++s));
+}
+
+/**
+ *  * p1 - palindrome
+ *   * @s: pointer to string
+ *    * @l: position
+ *     * Return: boolena
+ */
+
+int p1(char *s, int l)
+{
+	if (l < 1)
 	{
-		return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
+		return (1);
 	}
-	else if (*s1 == *s2)
+	if (*s == *(s + l))
 	{
-		return (wildcmp(s1 + 1, s2 + 1));
+		return (p1(s + 1, l - 2));
 	}
 	return (0);
+}
+
+/**
+ *  * is_palindrome - palindrome
+ *   * @s: pointer to string
+ *    * Return: recursion
+ */
+
+int is_palindrome(char *s)
+{
+	int len = _strlen_recursion(s);
+
+	return (p1(s, len - 1));
 }
