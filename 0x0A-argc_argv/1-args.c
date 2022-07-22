@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*
+/**
  * main - prints number of arguments
  * @argc: first parameter
  * @argv: second parameter
