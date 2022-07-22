@@ -6,24 +6,25 @@
  * @argv: argument vector
  * Return: 0 for success
  */
-
 int main(int argc, char *argv[])
 {
-	int i, res;
+	int i, j, sum = 0;
 
-	res = 0;
+	if (argc < 1)
+		printf("0\n");
 
-	for (i = 0; i < argc; i++)
+	for (i = 1; i < argc; i++)
 	{
-		if (i > 0)
+		for (j = 0; argv[i][j]; j++)
 		{
-			if (atoi(argv[i]) == 0)
+			if (!isdigit(argv[i][j]))
 			{
-				return (printf("Error\n"), 1);
+				printf("Error\n");
+				return (1);
 			}
-			res += atoi(argv[i]);
 		}
+		sum += atoi(argv[i]);
 	}
-	printf("%d\n", res);
+	printf("%d\n", sum);
 	return (0);
 }
