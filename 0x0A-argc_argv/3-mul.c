@@ -8,21 +8,18 @@
  * @argv: argument vector
  * Return: 0 if no errors
  */
-
 int main(int argc, char *argv[])
 {
-	int i, first_num, sec_num, product;
+	int i, j, k;
 
-	if (argc != 3)
+	i = 1;
+	j = 2;
+	k = 3;
+	if (argc != k)
 	{
-		return (printf("Erro\n"), 1);
+		printf("Error\n");
+		return (1);
 	}
-	for (i = 0; i < argc; i++)
-	{
-		first_num = atoi(argv[1]);
-		sec_num = atoi(argv[2]);
-	}
-	product = first_num * sec_num;
-	printf("%d\n", product);
+	printf("%d\n", atoi(argv[i]) * atoi(argv[j]));
 	return (0);
 }
