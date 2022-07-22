@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-int _putchar(char);
+int _putchar(char c);
 int main(int argc, char* argv[]);
 
-#endif
+#endif /*MAIN_H*/
