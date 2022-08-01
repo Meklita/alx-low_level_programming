@@ -1,36 +1,68 @@
-#include "dog.h"
-#include <stdlib.h>
+include "dog.h"
+/**
+ * _strdup - returns a pointer to space in memory containing copy of string.
+ * @s: pointer to the string.
+ * Return: Pointer to a string stored in memory.
+ */
+char *_strdup(char *s)
+{
+	char *dup;
+	unsigned int i = 0;
+	unsigned int j = 0;
+
+	if (s == NULL)
+		return (NULL);
+	/*Get the length of the string.*/
+	while (s[i] != '\0')
+		i += 1;
+	/*+1 to include the terminating character in size.*/
+	i++;
+	dup = malloc(i * sizeof(*dup));
+	if (dup == NULL)
+		return (NULL);
+	while (j < i)
+	{
+		dup[j] = s[j];
+		j++;
+	}
+	return (dup);
+}
+
+
 
 
 /**
- * new_dog - entry point
- * @name: string from main, name of pet
- * @age: number from main, age of pet
- * @owner: string from main, owner of pet
- * Return: p
+ * new_dog - create an instance of struct dog.
+ * @name:first argument.
+ * @age:second argument.
+ * @owner: Third argument.
+ * Return: instance of struct.
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *p;
-	/* reserving memory to struct*/
-	p = malloc(sizeof(dog_t));
-	if (p == NULL)
+	dog_t *newdog;
+
+	newdog = malloc(sizeof(struct dog));
+	if (newdog == NULL)
 		return (NULL);
-	/*  name pointer*/
-	if (name == NULL)
+	/*Assign name element of new struct to the copy of name.*/
+	newdog->name = _strdup(name);
+	if (newdog->name == NULL)
 	{
-		free(p);
-		free(owner);
+		free(newdog);
 		return (NULL);
 	}
-	if (owner == NULL)
+	/*Assgin owner element of new struct to the copy of owner.*/
+	newdog->owner = _strdup(owner);
+	if (newdog->owner == NULL)
 	{
-		free(p);
-		free(name);
+		free(newdog->name);
+		free(newdog);
 		return (NULL);
 	}
-	p->name = name;
-	p->age = age;
-	p->owner = owner;
-	return (p);
+	newdog->age = age;
+
+
+	return (newdog);
 }
+
