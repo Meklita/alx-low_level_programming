@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * printruct dog *d)_dog -entry point
+ * print_dog -entry point
  * @d: Entry of struct
  */
 
